@@ -18,17 +18,17 @@ class ListReviews extends React.Component {
   render () {
     const { movieId } = this.props
     const { reviews } = this.state
-    console.log(reviews)
+    console.log('props movie', this.props.movieId)
     let movieReviews = reviews.find(review => review['movie-id'] === this.props.movieId)
 
     console.log(movieReviews)
     return (
       <div>
-        {reviews !== undefined && reviews && (reviews.map((review) =>
+        {movieReviews !== undefined && movieReviews && (
           <div>
-            <p>{review.review}</p>
+            <p>{movieReviews.review}</p>
           </div>
-        ))}
+        )}
       </div>
     )
   }

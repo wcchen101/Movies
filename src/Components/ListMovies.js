@@ -10,24 +10,31 @@ class ListMovies extends React.Component {
     super(props)
     this.state ={
       movies: [],
-      reviews: [],
       reviewState: false,
+      reviewIndex: [],
     }
   }
   componentDidMount() {
     this.setState({
       movies: localMovies.movies,
-      reviews: localMovies.reviews,
     })
   }
-  onChangeReviewState(newState) {
+  onChangeReviewState(newState, index) {
+    let reviewIndex = this.state.reviewIndex
+    if (reviewIndex.includes(index)) {
+      index = reviewIndex.indexOf(index)
+      reviewIndex.splice(index, 1)
+    }
+    else {
+      reviewIndex.push(index)
+    }
     this.setState({
       reviewState: !newState,
+      reviewIndex: reviewIndex
     })
   }
   render() {
-    const { movies, reviews, reviewState } = this.state
-    console.log(reviews)
+    const { movies, reviewState, reviewIndex } = this.state
     return (
       <div className='list-movies-part'>
         <div className='list-movies '>
@@ -57,16 +64,15 @@ class ListMovies extends React.Component {
               <p>Oscar: {movie['oscars']}</p>
               </div>
               <div className='list-movies-review'>
-                {reviewState === true ?  (
+                {reviewIndex.includes(index) ?  (
                   <div>
                     <ListReviews
                       movieId={movie['id']}
                     />
-                    <p>{reviews['movie-id']}</p>
-                    <RaisedButton className='clearfix' label="Hide Review" onClick={() => this.onChangeReviewState(reviewState)} />
+                    <RaisedButton className='clearfix' label="Hide Review" onClick={() => this.onChangeReviewState(reviewState, index)} />
                   </div>
                 ) : (
-                  <RaisedButton className='clearfix' label="Read Review" onClick={() => this.onChangeReviewState(reviewState)} />
+                  <RaisedButton className='clearfix' label="Read Review" onClick={() => this.onChangeReviewState(reviewState, index)} />
                 )}
               </div>
             </div>
