@@ -9,7 +9,7 @@ class ListReviews extends React.Component {
       reviews: [],
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
       reviews: localMovies.reviews,
     })
@@ -17,9 +17,18 @@ class ListReviews extends React.Component {
 
   render () {
     const { movieId } = this.props
+    const { reviews } = this.state
+    console.log(reviews)
+    let movieReviews = reviews.find(review => review['movie-id'] === this.props.movieId)
+
+    console.log(movieReviews)
     return (
       <div>
-        <p>{movieId}</p>
+        {reviews !== undefined && reviews && (reviews.map((review) =>
+          <div>
+            <p>{review.review}</p>
+          </div>
+        ))}
       </div>
     )
   }
