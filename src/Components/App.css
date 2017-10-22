@@ -11,6 +11,6 @@ h1 {
     clear: both;
     display: table;
 }
-.movies-score {
-
+.list-movies-content {
+  padding: 10px 10px;
 }
