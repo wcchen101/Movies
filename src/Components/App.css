@@ -1,3 +1,16 @@
 h1 {
   color: #00008B;
 }
+.list-movies-image {
+  float:left;
+  margin: 0 0 10px 10px;
+  padding: 5px 15px 5px 5px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.movies-score {
+
+}
