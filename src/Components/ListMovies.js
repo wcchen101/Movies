@@ -36,22 +36,26 @@ class ListMovies extends React.Component {
               <img className='list-movies-image' src={movie['cover-url']} alt='movie images'/>
               <a> {movie['id']}. </a>
               <a href={movie['url']}> {movie['title']} </a>
-              <div className='movies-score'>
+              <a> ({movie['year']}) </a>
+              <div className='movies-score-part'>
                 <Rating
+                  className='custom-rating'
                   value={movie['score'] * 10}
                   max={10}
                   onChange={(value) => console.log(`Rated with value ${value}`)}
                 />
-                <a>{movie['score'] * 10}/10</a>
+                <p className='movies-score-number'>{movie['score'] * 10}/10</p>
               </div>
-              <a>year: {movie['year']}</a>
-              <a>director: {movie['director']}</a>
-              <a>url: {movie['url']}</a>
-              <p>synopsis: {movie['synopsis']}</p>
-              <a>rating: {movie['rating']}</a>
-              <a>runtime-in-minutes: {movie['runtime-in-minutes']}</a>
-              <a>oscar-nominations: {movie['oscar-nominations']}</a>
-              <p>oscar: {movie['oscars']}</p>
+              <div className='content-details'>
+              <br/>
+              <a>Director: {movie['director']}</a>
+              <a>Movie Url: {movie['url']}</a>
+              <p>Synopsis: {movie['synopsis']}</p>
+              <a>Rating: {movie['rating']}</a>
+              <a>Runtime-in-minutes: {movie['runtime-in-minutes']}</a>
+              <a>Oscar-nominations: {movie['oscar-nominations']}</a>
+              <p>Oscar: {movie['oscars']}</p>
+              </div>
               <div className='list-movies-review'>
                 {reviewState === true ?  (
                   <div>

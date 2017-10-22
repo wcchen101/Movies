@@ -1,6 +1,11 @@
 h1 {
   color: #00008B;
 }
+a {
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
 .list-movies-image {
   float:left;
   margin: 0 0 10px 10px;
@@ -13,4 +18,11 @@ h1 {
 }
 .list-movies-content {
   padding: 10px 10px;
+}
+.custom-rating {
+  float: left;
+  display: inline-block;
+}
+p.movies-score-number {
+  padding-top: 15px;
 }
