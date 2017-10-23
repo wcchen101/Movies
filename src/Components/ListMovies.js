@@ -51,7 +51,7 @@ class ListMovies extends React.Component {
                   max={10}
                   onChange={(value) => console.log(`Rated with value ${value}`)}
                 />
-                <p className='movies-score-number'>{movie['score'] * 10}/10</p>
+                <p className='movies-score-number'>{(movie['score'] * 10).toFixed(1)}/10</p>
               </div>
               <div className='content-details'>
               <br/>
